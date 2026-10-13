@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/levels/Level.gd" id="lvl"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/office.png" id="bg"]
+[ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="ply"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Clue.tscn" id="clue"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Exit.tscn" id="exit"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Accuse.tscn" id="accuse"]
+
+[node name="Office" type="Node2D"]
+script = ExtResource("lvl")
+bg_scale = 1.06
+floor_frac = 0.9
+interior = true
+char_scale = 6.5
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("bg")
+
+[node name="Entries" type="Node2D" parent="."]
+
+[node name="start" type="Marker2D" parent="Entries"]
+position = Vector2(320, 976)
+
+[node name="from_bar" type="Marker2D" parent="Entries"]
+position = Vector2(320, 976)
+
+[node name="Player" parent="." instance=ExtResource("ply")]
+position = Vector2(320, 976)
+
+[node name="CaseBoard" parent="." instance=ExtResource("clue")]
+position = Vector2(900, 1018)
+clue_id = "case_board"
+title = "The Case Board"
+description = "Your board: red string connecting the alley, the Neon Dragon, and a name you keep circling — Kanzaki."
+case_id = "case1"
+
+[node name="Accuse" parent="." instance=ExtResource("accuse")]
+position = Vector2(1200, 988)
+
+[node name="ExitToBar" parent="." instance=ExtResource("exit")]
+position = Vector2(150, 976)
+target_level = "bar"
+target_entry = "from_office"
+

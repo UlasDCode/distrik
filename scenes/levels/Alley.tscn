@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/levels/Level.gd" id="lvl"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/alley.png" id="bg"]
+[ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="ply"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/NPC.tscn" id="npc"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Clue.tscn" id="clue"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Exit.tscn" id="exit"]
+
+[node name="Alley" type="Node2D"]
+script = ExtResource("lvl")
+bg_scale = 1.4
+floor_frac = 0.9
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("bg")
+
+[node name="Entries" type="Node2D" parent="."]
+
+[node name="start" type="Marker2D" parent="Entries"]
+position = Vector2(280, 976)
+
+[node name="from_bar" type="Marker2D" parent="Entries"]
+position = Vector2(1450, 976)
+
+[node name="from_apartment" type="Marker2D" parent="Entries"]
+position = Vector2(640, 976)
+
+[node name="from_docks" type="Marker2D" parent="Entries"]
+position = Vector2(240, 976)
+
+[node name="from_clinic" type="Marker2D" parent="Entries"]
+position = Vector2(1000, 976)
+
+[node name="from_rooftop" type="Marker2D" parent="Entries"]
+position = Vector2(1250, 976)
+
+[node name="from_penthouse" type="Marker2D" parent="Entries"]
+position = Vector2(880, 976)
+
+[node name="from_archive" type="Marker2D" parent="Entries"]
+position = Vector2(720, 976)
+
+[node name="from_lobby" type="Marker2D" parent="Entries"]
+position = Vector2(880, 976)
+
+[node name="from_main" type="Marker2D" parent="Entries"]
+position = Vector2(240, 976)
+
+[node name="Player" parent="." instance=ExtResource("ply")]
+position = Vector2(280, 976)
+
+[node name="Informant" parent="." instance=ExtResource("npc")]
+position = Vector2(760, 976)
+npc_name = "Vera"
+sprite_path = "res://assets/characters/model_vera.png"
+dialogue_id = "informant_intro"
+post_dialogue_id = "vera_done"
+
+[node name="Clue1" parent="." instance=ExtResource("clue")]
+position = Vector2(1060, 1018)
+clue_id = "matchbook"
+title = "Burnt Matchbook"
+description = "A matchbook from the Neon Dragon bar, half burnt. Someone was here recently."
+case_id = "case1"
+
+[node name="Victim" parent="." instance=ExtResource("clue")]
+position = Vector2(480, 1020)
+clue_id = "victim"
+title = "The Victim"
+description = "Male, forties, no ID. A faded corporate tattoo on his wrist — mid-level, expendable. Whoever did this wanted him gone quietly."
+case_id = "case1"
+
+[node name="ExitToApartment" parent="." instance=ExtResource("exit")]
+position = Vector2(406, 976)
+target_level = "apartment"
+target_entry = "from_alley"
+
+[node name="ExitToBar" parent="." instance=ExtResource("exit")]
+position = Vector2(1316, 976)
+target_level = "bar"
+target_entry = "from_alley"
+
+[node name="ExitToMainStreet" parent="." instance=ExtResource("exit")]
+position = Vector2(1148, 976)
+target_level = "main_street"
+target_entry = "from_alley"
+requires_flag = "main_started"
+travel_note = "Out of the alley and onto the main drag — neon, noise, and the long walk into whatever Kanzaki's been sinking in the harbor."

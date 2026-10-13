@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/levels/Level.gd" id="lvl"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/apartment.png" id="bg"]
+[ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="ply"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Clue.tscn" id="clue"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Exit.tscn" id="exit"]
+
+[node name="Apartment" type="Node2D"]
+script = ExtResource("lvl")
+bg_scale = 1.1
+floor_frac = 0.9
+interior = true
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("bg")
+
+[node name="Entries" type="Node2D" parent="."]
+
+[node name="start" type="Marker2D" parent="Entries"]
+position = Vector2(280, 800)
+
+[node name="from_alley" type="Marker2D" parent="Entries"]
+position = Vector2(280, 800)
+
+[node name="Player" parent="." instance=ExtResource("ply")]
+position = Vector2(280, 800)
+
+[node name="Letter" parent="." instance=ExtResource("clue")]
+position = Vector2(760, 800)
+clue_id = "letter"
+title = "Unsent Letter"
+description = "'If anything happens to me, it was Kanzaki. I saw what they dumped at the docks. I was taking it to the press.' The victim was a whistleblower — that's the motive."
+case_id = "case1"
+
+[node name="Photo" parent="." instance=ExtResource("clue")]
+position = Vector2(1050, 800)
+clue_id = "photo"
+title = "A Photograph"
+description = "The victim, younger, smiling in a Kanzaki corporate uniform. He was one of them once — until he wasn't."
+case_id = "case1"
+
+[node name="ExitToAlley" parent="." instance=ExtResource("exit")]
+position = Vector2(130, 800)
+target_level = "alley"
+target_entry = "from_apartment"

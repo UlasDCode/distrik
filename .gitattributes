@@ -1,0 +1,16 @@
+# Normalize text line endings; treat game binaries as binary.
+* text=auto eol=lf
+
+*.gd      text
+*.tscn    text
+*.godot   text
+*.cfg     text
+*.import  text
+*.json    text
+*.md      text
+
+*.png     binary
+*.wav     binary
+*.ogg     binary
+*.ttf     binary
+*.otf     binary

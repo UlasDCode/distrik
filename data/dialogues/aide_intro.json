@@ -1,0 +1,40 @@
+{
+  "start": {
+    "speaker": "Aide",
+    "text": "Welcome to the Office of Municipal Reclamation. You're dripping on the marble. How may I direct your... concern?",
+    "next": "n1"
+  },
+  "n1": {
+    "speaker": "Aide",
+    "text": "Please keep it brief. The Office values everyone's time equally, which is to say, not at all.",
+    "choices": [
+      {"text": "I want to see the Reclamation Board.", "next": "board"},
+      {"text": "People are dying in the harbor districts.", "next": "dying"},
+      {"text": "Who signed Order R-9?", "next": "r9", "requires": "clue_reclamation_directive"},
+      {"text": "(Leave.)", "next": "bye"}
+    ]
+  },
+  "board": {
+    "speaker": "Aide",
+    "text": "The Board doesn't take appointments, detective. The Board doesn't take anything — it reviews, it allocates, it reclaims. There's no man behind the curtain. There's a committee, and committees don't have faces to punch. Would you like a pamphlet?",
+    "set_flag": "knows_board_door",
+    "discover": {"case": "case2", "id": "the_committee", "title": "There Is No Man", "desc": "The aide explains, pleasantly, that the Reclamation Board is a committee — no chair you can name, no face you can hold accountable. Decisions arrive from it the way weather does. You came looking for a villain and found a procedure."},
+    "next": "n1"
+  },
+  "dying": {
+    "speaker": "Aide",
+    "text": "Yes. That's logged. 'Sub-standard water outcomes, harbor sector.' It's a Tier-Three municipal concern — there's a form, 27-B, if you'd like to add a statement. Current response time is... indefinite. His smile doesn't move when he says it. Is there anything else?",
+    "next": "n1"
+  },
+  "r9": {
+    "speaker": "Aide",
+    "text": "Order R-9 is a routine sanitation allocation. Sealed, per policy. I can't tell you who signed it. And honestly, aide to aide? Neither could the person who signed it — it came up through channels, initialled at each desk, no single hand responsible at any point. That's not a cover-up, detective. That's just how the building breathes.",
+    "next": "n1"
+  },
+  "bye": {
+    "speaker": "Aide",
+    "text": "Mind the steps on your way out. They're original marble. We do so hate to see them stained.",
+    "next": "done"
+  },
+  "done": {"end": true}
+}

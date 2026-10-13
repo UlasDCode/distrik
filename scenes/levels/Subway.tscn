@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/levels/Level.gd" id="lvl"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/subway.png" id="bg"]
+[ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="ply"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/NPC.tscn" id="npc"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Exit.tscn" id="exit"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Clue.tscn" id="clue"]
+
+[node name="Subway" type="Node2D"]
+script = ExtResource("lvl")
+bg_scale = 1.1
+floor_frac = 0.86
+interior = true
+char_scale = 6.0
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("bg")
+
+[node name="Entries" type="Node2D" parent="."]
+
+[node name="start" type="Marker2D" parent="Entries"]
+position = Vector2(300, 800)
+
+[node name="from_street" type="Marker2D" parent="Entries"]
+position = Vector2(300, 800)
+
+[node name="Player" parent="." instance=ExtResource("ply")]
+position = Vector2(300, 800)
+
+[node name="Sable" parent="." instance=ExtResource("npc")]
+position = Vector2(1020, 800)
+npc_name = "Sable"
+dialogue_id = "busker_intro"
+sprite_path = "res://assets/characters/model_sable.png"
+post_dialogue_id = "busker_done"
+done_flag = "clue_renner_deaddrop"
+
+[node name="DeadDrop" parent="." instance=ExtResource("clue")]
+position = Vector2(640, 800)
+clue_id = "renner_deaddrop"
+title = "Renner's Dead-Drop"
+description = "A jammed luggage locker behind the busker, Renner's key from the evidence photo working it loose. Inside: a burner drive and a note in a shaking hand — 'It's not Kanzaki. He's the hired hand. Follow the tender. R-9 is a CITY order. I have the seal number. If you're reading this, I didn't make it.' The courier had the whole shape of it before anyone. It got him killed."
+case_id = "case2"
+
+[node name="ExitToStreet" parent="." instance=ExtResource("exit")]
+position = Vector2(140, 800)
+target_level = "main_street"
+target_entry = "from_subway"

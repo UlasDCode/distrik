@@ -1,0 +1,80 @@
+{
+  "start": {
+    "speaker": "Rook",
+    "text": "Far as you go, gumshoe. The elevator's private, and Mr. Kanzaki isn't taking walk-ins — 'specially not the one who's been asking the docks about drums.",
+    "next": "n1"
+  },
+  "n1": {
+    "speaker": "Rook",
+    "text": "So turn around. Or give me a reason not to put you down the stairs the quick way.",
+    "choices": [
+      {"text": "Show him Order R-9.", "next": "r9", "requires": "clue_reclamation_directive"},
+      {"text": "Kanzaki's finished. Don't go down with him.", "next": "pragmatic", "requires": "knows_coverup"},
+      {"text": "(Enough talk. Take him.)", "next": "brawl"},
+      {"text": "We've met. The Neon Dragon, back when this started.", "next": "callback"},
+      {"text": "(Back off — for now.)", "next": "bye"}
+    ]
+  },
+  "brawl": {
+    "speaker": "Rook",
+    "text": "Ha. The tired man wants to dance. Your left arm's been ticking since you walked in, detective — I can hear the servo skipping. Come on, then. Show me what the city left you.",
+    "next": "brawl_qte"
+  },
+  "brawl_qte": {
+    "qte": {"title": "HOLD HIM OFF", "rounds": 5, "need": 3, "window": 0.95,
+            "bg": "res://assets/backgrounds/tower_lobby.png",
+            "foe": "res://assets/characters/model_rook.png",
+            "win": "brawl_win", "lose": "brawl_lose", "set_win": "passed_rook"}
+  },
+  "brawl_win": {
+    "speaker": "Rook",
+    "text": "...Alright. Alright. You hit like the rent's overdue. My arm doesn't glitch, and it still wasn't enough — that's a compliment, from me.",
+    "set_flags": ["knows_rival", "beat_rook"],
+    "next": "brawl_win2"
+  },
+  "brawl_win2": {
+    "speaker": "Rook",
+    "text": "Go up. Bleed on his carpet, not mine. And when you're up there — remember the Zheng cartel would trade their teeth for whatever's got you this stupid. Elevator's yours.",
+    "next": "done"
+  },
+  "brawl_lose": {
+    "speaker": "Rook",
+    "text": "There it is. The arm quits right when you need it — that's the city's whole design, detective, wrote small in your own wiring. Sit down before you fall down. Try the door again when you've got a better idea than your fists.",
+    "set_flag": "roughed_up",
+    "next": "n1"
+  },
+  "r9": {
+    "speaker": "Rook",
+    "text": "...Let me see that. That's a city seal. Reclamation Board.",
+    "next": "r9b"
+  },
+  "r9b": {
+    "speaker": "Rook",
+    "text": "Huh. All this time I figured I was guarding a rich man. Turns out I'm guarding a *subcontractor.* That's not a syndicate problem, detective. That's a him problem, and I don't take a bullet for a him problem.",
+    "set_flags": ["passed_rook", "knows_rival"],
+    "discover": {"case": "case2", "id": "rook_tip", "title": "Rook's Tip", "desc": "Kanzaki's own enforcer read the city seal on Order R-9 and stepped aside. His parting advice: the Zheng cartel has wanted Kanzaki's harbor contract for years. A page like R-9, in the right rival hands, is worth more than any headline — and it wouldn't stop the drums. It'd just change whose name is on them."},
+    "next": "r9c"
+  },
+  "r9c": {
+    "speaker": "Rook",
+    "text": "One more thing, free of charge. The Zheng cartel would trade their teeth for that page — they've wanted Kanzaki's harbor for years. You could walk out of here rich instead of righteous. Elevator's yours. Try not to bleed on the marble.",
+    "next": "done"
+  },
+  "pragmatic": {
+    "speaker": "Rook",
+    "text": "Finished. Sure. Men like him are always finished, right up until they're not and you're floating face-down in the harbor you were so worried about. Come back when 'finished' is a piece of paper and not a feeling.",
+    "next": "n1"
+  },
+  "callback": {
+    "speaker": "Rook",
+    "text": "I remember. You were greener then. You've got the look now — the one that doesn't expect to like what's upstairs. Doesn't change my job, though.",
+    "set_flag": "met_rook",
+    "next": "n1"
+  },
+  "bye": {
+    "speaker": "Rook",
+    "text": "Smart. Rain's better company than what's up top anyway.",
+    "next": "done"
+  },
+  "done": {"end": true}
+}

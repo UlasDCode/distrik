@@ -1,0 +1,35 @@
+{
+  "start": {
+    "speaker": "Vera",
+    "text": "You're the detective they sent? Hah. This city eats detectives for breakfast.",
+    "next": "n1"
+  },
+  "n1": {
+    "speaker": "Vera",
+    "text": "Ask your questions. The rain isn't getting any drier.",
+    "choices": [
+      {"text": "What do you know about the murder?", "next": "murder"},
+      {"text": "Who runs this district?", "next": "district"},
+      {"text": "(Say nothing and leave)", "next": "bye"}
+    ]
+  },
+  "murder": {
+    "speaker": "Vera",
+    "text": "Found him in the alley, cold as the neon. He had a matchbook from the Neon Dragon. That place is nothing but trouble.",
+    "set_flag": "knows_neon_dragon",
+    "discover": {"case": "case1", "id": "lead_neon_dragon", "title": "Lead: The Neon Dragon", "desc": "Vera says the victim carried a matchbook from the Neon Dragon bar. Worth a visit."},
+    "next": "n1"
+  },
+  "district": {
+    "speaker": "Vera",
+    "text": "The Kanzaki syndicate owns these streets. But you didn't hear it from me. Flash that name around and you'll end up in the alley too.",
+    "set_flag": "knows_kanzaki",
+    "next": "n1"
+  },
+  "bye": {
+    "speaker": "Vera",
+    "text": "Watch your back out there, detective.",
+    "next": "done"
+  },
+  "done": {"end": true}
+}

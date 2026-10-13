@@ -1,0 +1,28 @@
+{
+  "start": {
+    "speaker": "Patient",
+    "text": "You a doctor? No... you've got the look of a man asking questions instead of answering them.",
+    "next": "n1"
+  },
+  "n1": {
+    "speaker": "Patient",
+    "text": "Ask, then. I've got nothing but time and tremors.",
+    "choices": [
+      {"text": "What happened to you?", "next": "sick"},
+      {"text": "(Let him rest.)", "next": "bye"}
+    ]
+  },
+  "sick": {
+    "speaker": "Patient",
+    "text": "Worked the harbor twenty years. Now my hands won't hold a cup and the left eye's gone dark. Doc says it's the water. Whole block's the same. City's calling it a bad season.",
+    "set_flag": "heard_sick",
+    "discover": {"case": "case2", "id": "patient_testimony", "title": "The Sick Ward", "desc": "A dockworker, half-blind, hands shaking — poisoned by the harbor water. He says his whole block has it. This is the human cost of KZ-7, filed away as 'a bad season.'"},
+    "next": "n1"
+  },
+  "bye": {
+    "speaker": "Patient",
+    "text": "...Find whoever did this to us. Please.",
+    "next": "done"
+  },
+  "done": {"end": true}
+}

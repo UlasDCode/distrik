@@ -1,0 +1,20 @@
+# Godot 4+ engine cache (regenerated on first open)
+.godot/
+
+# Exports / builds
+/export/
+/build/
+*.exe
+*.pck
+*.zip
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+*~
+NVIDIA Corporation/
+
+# Local debug / scratch
+Screenshot.gd
+*.tmp

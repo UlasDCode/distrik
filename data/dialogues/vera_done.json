@@ -1,0 +1,8 @@
+{
+  "start": {
+    "speaker": "Vera",
+    "text": "Case is closed, detective. I've said my piece. Go chase your ghosts somewhere they'll thank you for it.",
+    "next": "done"
+  },
+  "done": {"end": true}
+}

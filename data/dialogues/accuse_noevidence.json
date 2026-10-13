@@ -1,0 +1,8 @@
+{
+  "start": {
+    "speaker": "Detective",
+    "text": "I've got nothing to go on. No evidence, no name — just a dead man and the rain. Point a finger now and I'd only be guessing. I need to actually work this: the scene, the people, the places he touched.",
+    "next": "done"
+  },
+  "done": {"end": true}
+}

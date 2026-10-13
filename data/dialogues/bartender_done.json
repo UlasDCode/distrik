@@ -1,0 +1,8 @@
+{
+  "start": {
+    "speaker": "Kaito",
+    "text": "You again. The Dragon's got nothing left for you — no leads, no free advice. Drink or walk.",
+    "next": "done"
+  },
+  "done": {"end": true}
+}

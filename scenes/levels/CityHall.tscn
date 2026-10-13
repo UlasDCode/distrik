@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/levels/Level.gd" id="lvl"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/cityhall.png" id="bg"]
+[ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="ply"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/NPC.tscn" id="npc"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Exit.tscn" id="exit"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Clue.tscn" id="clue"]
+
+[node name="CityHall" type="Node2D"]
+script = ExtResource("lvl")
+bg_scale = 1.1
+floor_frac = 0.92
+interior = true
+char_scale = 6.0
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("bg")
+
+[node name="Entries" type="Node2D" parent="."]
+
+[node name="start" type="Marker2D" parent="Entries"]
+position = Vector2(300, 900)
+
+[node name="from_street" type="Marker2D" parent="Entries"]
+position = Vector2(300, 900)
+
+[node name="Player" parent="." instance=ExtResource("ply")]
+position = Vector2(300, 900)
+
+[node name="Aide" parent="." instance=ExtResource("npc")]
+position = Vector2(1030, 900)
+npc_name = "Aide"
+dialogue_id = "aide_intro"
+sprite_path = "res://assets/characters/model_aide.png"
+post_dialogue_id = "aide_done"
+done_flag = "knows_board_door"
+
+[node name="BoardDoor" parent="." instance=ExtResource("clue")]
+position = Vector2(660, 900)
+clue_id = "board_door"
+title = "The Unmarked Door"
+description = "A tall frosted door at the top of the marble steps. No nameplate. No handle you can find. Behind it, presumably, the Reclamation Board sits in session. There's no lock to pick because there's no need — the door isn't held shut by force. It's held shut by the simple, total certainty that no one you could name is on the other side."
+case_id = "case2"
+
+[node name="ExitToStreet" parent="." instance=ExtResource("exit")]
+position = Vector2(150, 900)
+target_level = "downtown"
+target_entry = "from_cityhall"

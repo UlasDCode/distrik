@@ -1,0 +1,8 @@
+{
+  "start": {
+    "speaker": "Rook",
+    "text": "Told you — your funeral, not mine. Elevator's open. Whatever you decide up there, leave my name out of the paperwork.",
+    "next": "done"
+  },
+  "done": {"end": true}
+}

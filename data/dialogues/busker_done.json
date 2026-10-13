@@ -1,0 +1,8 @@
+{
+  "start": {
+    "speaker": "Sable",
+    "text": "You found the kid's wall, then. Good. Somebody should carry what he couldn't. Now go — the next train's a long time coming, and you don't want to be here when it does.",
+    "next": "done"
+  },
+  "done": {"end": true}
+}

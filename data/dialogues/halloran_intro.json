@@ -1,0 +1,67 @@
+{
+  "start": {
+    "speaker": "Halloran",
+    "text": "Rooftops are for people who want privacy, detective. So talk quiet.",
+    "next": "n1"
+  },
+  "n1": {
+    "speaker": "Halloran",
+    "text": "Say your piece.",
+    "choices": [
+      {"text": "You sign Kanzaki's poison through customs.", "next": "press", "requires": "knows_toxin"},
+      {"text": "How many others sign for Kanzaki?", "next": "others", "requires": "clue_kanzaki_threat"},
+      {"text": "These debts. What does he really own?", "next": "daughter", "requires": "met_halloran"},
+      {"text": "What happens if I take this to Kanzaki?", "next": "warning", "requires": "knows_coverup"},
+      {"text": "Who are you?", "next": "who"},
+      {"text": "(Walk away.)", "next": "bye"}
+    ]
+  },
+  "who": {
+    "speaker": "Halloran",
+    "text": "Harbor Authority. I make sure the paperwork's clean and the questions stay unasked. Steady work, if you can keep your dinner down.",
+    "set_flag": "met_halloran",
+    "next": "n1"
+  },
+  "press": {
+    "speaker": "Halloran",
+    "text": "...You've got the analysis. God. Fine — yes. I stamp KZ-7 through every month, and Kanzaki keeps my debts buried. You think I wanted this? There's a paper trail. My office, third drawer down. Take it and lose my name.",
+    "set_flag": "knows_coverup",
+    "discover": {"case": "case2", "id": "halloran_confession", "title": "Halloran's Paper Trail", "desc": "The harbor inspector admits he rubber-stamps KZ-7 for Kanzaki to clear his debts. There's a documented trail — the proof tying the syndicate directly to the dumping."},
+    "next": "n1"
+  },
+  "others": {
+    "speaker": "Halloran",
+    "text": "Others? Half the harbor authority. A judge. Two on the city council. Kanzaki doesn't buy men, detective — he buys their debts, then owns them. I was just cheaper than most.",
+    "set_flag": "knows_web",
+    "discover": {"case": "case2", "id": "the_web", "title": "The Web", "desc": "Halloran: Kanzaki owns half the harbor authority, a judge, two councillors — all through their debts. The rot goes far higher than one inspector."},
+    "next": "n1"
+  },
+  "daughter": {
+    "speaker": "Halloran",
+    "text": "My girl. Mei. Nine years old and she can't hold a spoon anymore — same tremors as the dockhands, the same blindness coming. She drank the same water I stamped through. That's the joke of it.",
+    "set_flag": "knows_halloran_daughter",
+    "next": "daughter2"
+  },
+  "daughter2": {
+    "speaker": "Halloran",
+    "text": "Kanzaki pays her clinic bills. Every month, on time. The day I stop signing, the money stops, and Mei stops with it. So don't stand there deciding what kind of man I am. I already know. I sign, and my daughter breathes.",
+    "discover": {"case": "case2", "id": "halloran_daughter", "title": "Mei's Clinic Chart", "desc": "Halloran's daughter, nine, is dying of the same neuroagent he waves through customs — poisoned by the water he signs off on. Kanzaki covers her care, on the condition he keeps signing. The inspector isn't bought. He's hostage to the thing that's killing his own child."},
+    "next": "daughter3"
+  },
+  "daughter3": {
+    "speaker": "Detective",
+    "text": "(My arm ticks in the cold. There's a stack of favors I never logged, corners I round every month to make rent and keep my license. We're the same animal, Halloran — just standing in different water. The city teaches everyone the same lesson: survive this week, and let next week's conscience worry about next week.)",
+    "next": "n1"
+  },
+  "warning": {
+    "speaker": "Halloran",
+    "text": "You'll walk into a tower full of his people carrying enough to hang him. Either he buys you, or you don't walk out. There's no third door, detective. ...Good luck finding one anyway.",
+    "next": "n1"
+  },
+  "bye": {
+    "speaker": "Halloran",
+    "text": "Smart. The rain'll wash you off this roof either way.",
+    "next": "done"
+  },
+  "done": {"end": true}
+}

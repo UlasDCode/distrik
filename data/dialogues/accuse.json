@@ -1,0 +1,39 @@
+{
+  "start": {
+    "speaker": "Detective",
+    "text": "The board's a mess of red string and doubt. Time to call it. Who killed the man in the alley?",
+    "choices": [
+      {"text": "The Kanzaki syndicate silenced him.", "next": "accuse_kanzaki", "requires": "kanzaki_paid"},
+      {"text": "The bartender, Kaito, did it.", "next": "accuse_wrong", "requires": "clue_ledger"},
+      {"text": "A random mugging gone wrong.", "next": "accuse_wrong"},
+      {"text": "(Not yet — keep investigating.)", "next": "cancel"}
+    ]
+  },
+  "cancel": {
+    "speaker": "Detective",
+    "text": "...Not yet. I want to be sure before I put a name in ink.",
+    "next": "done"
+  },
+  "accuse_kanzaki": {
+    "branch": {"flag": "clue_letter", "yes": "win_full", "no": "win_partial"}
+  },
+  "win_full": {
+    "speaker": "Detective",
+    "text": "He was going to take the docks evidence to the press. Kanzaki cleared his tab to keep him close, then had him silenced. The letter, the matchbook, the paid debt — it all fits. Case closed.",
+    "set_flags": ["prologue_done", "prologue_right"],
+    "next": "done"
+  },
+  "win_partial": {
+    "speaker": "Detective",
+    "text": "Kanzaki's behind it — the paid tab, the enforcer's threat. I can't prove the why, but I know rot when I smell it. Close enough to sign my name to it.",
+    "set_flags": ["prologue_done", "prologue_right"],
+    "next": "done"
+  },
+  "accuse_wrong": {
+    "speaker": "Detective",
+    "text": "...Maybe. But it doesn't sit right, and it never will. You close the file and let the rain take the rest. That's the job.",
+    "set_flag": "prologue_done",
+    "next": "done"
+  },
+  "done": {"end": true}
+}

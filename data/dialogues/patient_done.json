@@ -1,0 +1,4 @@
+{
+  "start": {"speaker": "Patient", "text": "Just... make it mean something, detective. That's all I've got left to ask.", "next": "done"},
+  "done": {"end": true}
+}

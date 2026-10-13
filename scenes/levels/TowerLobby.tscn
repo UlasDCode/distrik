@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/levels/Level.gd" id="lvl"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/tower_lobby.png" id="bg"]
+[ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="ply"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/NPC.tscn" id="npc"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Exit.tscn" id="exit"]
+
+[node name="TowerLobby" type="Node2D"]
+script = ExtResource("lvl")
+bg_scale = 1.1
+floor_frac = 0.9
+interior = true
+char_scale = 6.0
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("bg")
+
+[node name="Entries" type="Node2D" parent="."]
+
+[node name="start" type="Marker2D" parent="Entries"]
+position = Vector2(300, 900)
+
+[node name="from_street" type="Marker2D" parent="Entries"]
+position = Vector2(300, 900)
+
+[node name="from_penthouse" type="Marker2D" parent="Entries"]
+position = Vector2(1000, 900)
+
+[node name="Player" parent="." instance=ExtResource("ply")]
+position = Vector2(300, 900)
+
+[node name="Rook" parent="." instance=ExtResource("npc")]
+position = Vector2(480, 900)
+npc_name = "Rook"
+dialogue_id = "rook_gate"
+sprite_path = "res://assets/characters/model_rook.png"
+post_dialogue_id = "rook_lobby_done"
+done_flag = "passed_rook"
+
+[node name="ExitToPenthouse" parent="." instance=ExtResource("exit")]
+position = Vector2(650, 900)
+target_level = "penthouse"
+target_entry = "from_street"
+requires_flag = "passed_rook"
+travel_note = "The private elevator swallows you in brass and silence, and starts to climb. Somewhere around the fortieth floor the air changes — the harbor stink, the wet rot, the mildew I've breathed for nine years all get filtered out of me, and what's left is purified ozone and cold cotton. Up here it doesn't rain. Up here it has never rained. That's the whole crime, right there, in the air-conditioning."
+
+[node name="ExitToStreet" parent="." instance=ExtResource("exit")]
+position = Vector2(140, 900)
+target_level = "downtown"
+target_entry = "from_lobby"

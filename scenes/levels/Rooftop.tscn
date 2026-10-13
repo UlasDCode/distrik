@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/levels/Level.gd" id="lvl"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/rooftop.png" id="bg"]
+[ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="ply"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/NPC.tscn" id="npc"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Exit.tscn" id="exit"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Clue.tscn" id="clue"]
+
+[node name="Rooftop" type="Node2D"]
+script = ExtResource("lvl")
+bg_scale = 1.4
+floor_frac = 0.82
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("bg")
+
+[node name="Entries" type="Node2D" parent="."]
+
+[node name="start" type="Marker2D" parent="Entries"]
+position = Vector2(320, 900)
+
+[node name="from_street" type="Marker2D" parent="Entries"]
+position = Vector2(320, 900)
+
+[node name="Player" parent="." instance=ExtResource("ply")]
+position = Vector2(320, 900)
+
+[node name="Halloran" parent="." instance=ExtResource("npc")]
+position = Vector2(1150, 900)
+npc_name = "Halloran"
+dialogue_id = "halloran_intro"
+sprite_path = "res://assets/characters/model_halloran.png"
+post_dialogue_id = "halloran_done"
+done_flag = "knows_coverup"
+
+[node name="Flask" parent="." instance=ExtResource("clue")]
+position = Vector2(700, 900)
+clue_id = "halloran_flask"
+title = "Engraved Flask"
+description = "A silver flask, near-empty, engraved: 'To H — for services rendered. K.' Even his drinking's on Kanzaki's tab."
+case_id = "case2"
+
+[node name="ThreatNote" parent="." instance=ExtResource("clue")]
+position = Vector2(500, 900)
+clue_id = "kanzaki_threat"
+title = "A Pinned Note"
+description = "A note weighted under a bottle: 'Keep signing. Remember what happens to men who grow a conscience. — K.' Halloran isn't the only one trapped up here."
+case_id = "case2"
+
+[node name="ExitToStreet" parent="." instance=ExtResource("exit")]
+position = Vector2(150, 900)
+target_level = "main_street"
+target_entry = "from_rooftop"

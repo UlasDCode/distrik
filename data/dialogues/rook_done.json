@@ -1,0 +1,8 @@
+{
+  "start": {
+    "speaker": "Rook",
+    "text": "You got your man. Or you didn't. Either way, we're done talking, detective.",
+    "next": "done"
+  },
+  "done": {"end": true}
+}

@@ -1,0 +1,80 @@
+{
+  "start": {
+    "speaker": "Kanzaki",
+    "text": "You came a long way up, detective. Most people who reach my floor arrive in a bag.",
+    "next": "n1"
+  },
+  "n1": {
+    "speaker": "Kanzaki",
+    "text": "So. What is it you think you have?",
+    "choices": [
+      {"text": "Halloran's trail. It ends at you. I'm too tired to dress it up.", "next": "accuse", "requires": "knows_coverup"},
+      {"text": "R-9. The city ordered it. Don't insult me by denying it.", "next": "directive", "requires": "clue_reclamation_directive"},
+      {"text": "Renner died for this. A kid with a notebook.", "next": "renner", "requires": "clue_renner_notes"},
+      {"text": "You marked whole districts to die.", "next": "districts", "requires": "clue_district_map"},
+      {"text": "Just tell me why the harbor.", "next": "why"},
+      {"text": "(Say nothing. Let him fill the silence.)", "next": "wait"}
+    ]
+  },
+  "why": {
+    "speaker": "Kanzaki",
+    "text": "A bad batch is a liability on a balance sheet. The harbor's cheaper than a landfill and asks fewer questions. The low districts were... already written off.",
+    "next": "n1"
+  },
+  "renner": {
+    "speaker": "Kanzaki",
+    "text": "The courier? Brave, poor, and certain the truth would protect him. Three luxuries I've never been able to afford. I kept his notes. Sentiment, I suppose. You'll find them in the drawer.",
+    "next": "n1"
+  },
+  "districts": {
+    "speaker": "Kanzaki",
+    "text": "I marked what was already lost. Those districts were dying long before my drums touched the water — of rent, of rot, of being poor in a city that bills by the breath. I only made it efficient.",
+    "next": "n1"
+  },
+  "directive": {
+    "speaker": "Kanzaki",
+    "text": "So you found it. Reclamation Order R-9. Read the letterhead, detective — that's not mine. That's the city's.",
+    "set_flag": "knows_directive",
+    "next": "directive2"
+  },
+  "directive2": {
+    "speaker": "Kanzaki",
+    "text": "I didn't invent the harbor. I answered a tender. The Reclamation Board needed a nuisance to disappear — forty thousand people the ledgers had already crossed out — and I was the low bid. I'm not the disease. I'm the invoice.",
+    "next": "directive3"
+  },
+  "directive3": {
+    "speaker": "Kanzaki",
+    "text": "Hang me tomorrow and the Board reopens the tender by Friday. Someone cheaper signs. The drums keep coming. You want the man who ordered this? Go knock on City Hall. They'll offer you coffee and a very short fall.",
+    "next": "n1"
+  },
+  "wait": {
+    "speaker": "Kanzaki",
+    "text": "Silence. I respect that. It won't fill the hole in your case, though.",
+    "next": "n1"
+  },
+  "accuse": {
+    "speaker": "Kanzaki",
+    "text": "...So you do. The inspector, the analysis, the reporter's notes. Enough to bury me — if you live long enough to file it.",
+    "set_flag": "faced_kanzaki",
+    "next": "choose"
+  },
+  "choose": {
+    "speaker": "Kanzaki",
+    "text": "So let's deal, detective. Name your price. Or name your grave.",
+    "choices": [
+      {"text": "No deal. This goes public.", "next": "end_expose"},
+      {"text": "...Name a number.", "next": "end_bribe"},
+      {"text": "Neither. R-9 goes to the Zheng cartel.", "next": "end_thirddoor", "requires": "knows_rival"},
+      {"text": "You're nothing. There's a name in the minutes — and I'm coming for the Board.", "next": "end_board", "requires": "clue_board_minutes"},
+      {"text": "You don't get to choose. (Draw.)", "next": "end_violence"},
+      {"text": "(Say nothing. Fold the file away. Walk out.)", "next": "end_walkaway"}
+    ]
+  },
+  "end_expose": {"speaker": "Detective", "text": "\"Keep your money. This city gets to know what you fed it.\"", "set_flag": "ending_expose", "next": "done"},
+  "end_bribe": {"speaker": "Detective", "text": "\"...Say it slow. And make it worth my silence.\"", "set_flag": "ending_bribe", "next": "done"},
+  "end_thirddoor": {"speaker": "Detective", "text": "\"No headline saves this city — you taught me that. But your rivals would pay to learn what you sank. There's my third door, Kanzaki. Enjoy the competition.\"", "set_flag": "ending_thirddoor", "next": "done"},
+  "end_board": {"speaker": "Detective", "text": "\"Keep your number and your grave. You're just the invoice — I want the hand that signed it. And the minutes gave me the one name you couldn't redact.\"", "set_flag": "ending_board", "next": "done"},
+  "end_walkaway": {"speaker": "Kanzaki", "text": "...Nothing? You come all this way, and you just leave? ...Ah. You understand now. That's worse for you than any deal — you'll carry it out the door and never set it down.", "set_flag": "ending_walkaway", "next": "done"},
+  "end_violence": {"speaker": "Detective", "text": "\"There's only one number I came up here for, Kanzaki.\"", "set_flag": "ending_violence", "next": "done"},
+  "done": {"end": true}
+}

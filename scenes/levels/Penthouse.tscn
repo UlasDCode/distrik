@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/levels/Level.gd" id="lvl"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/penthouse.png" id="bg"]
+[ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="ply"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Finale.tscn" id="fin"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Exit.tscn" id="exit"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Clue.tscn" id="clue"]
+
+[node name="Penthouse" type="Node2D"]
+script = ExtResource("lvl")
+bg_scale = 1.1
+floor_frac = 0.9
+interior = true
+char_scale = 6.0
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("bg")
+
+[node name="Entries" type="Node2D" parent="."]
+
+[node name="start" type="Marker2D" parent="Entries"]
+position = Vector2(300, 900)
+
+[node name="from_street" type="Marker2D" parent="Entries"]
+position = Vector2(300, 900)
+
+[node name="Player" parent="." instance=ExtResource("ply")]
+position = Vector2(300, 900)
+
+[node name="Kanzaki" parent="." instance=ExtResource("fin")]
+position = Vector2(1000, 900)
+sprite_path = "res://assets/characters/model_kanzaki.png"
+
+[node name="RennerNotes" parent="." instance=ExtResource("clue")]
+position = Vector2(600, 900)
+clue_id = "renner_notes"
+title = "Renner's Notebook"
+description = "The reporter's notebook, locked in Kanzaki's own drawer. Renner had all of it — the drums, the dates, the inspector's name. He died for these pages. Now they're yours."
+case_id = "case2"
+
+[node name="Map" parent="." instance=ExtResource("clue")]
+position = Vector2(400, 900)
+clue_id = "district_map"
+title = "The District Map"
+description = "A lit map on the wall. Whole districts marked in red — every one downwind of the harbor. Kanzaki didn't just poison them. He wrote them off, by name, in advance."
+case_id = "case2"
+
+[node name="ExitToStreet" parent="." instance=ExtResource("exit")]
+position = Vector2(140, 900)
+target_level = "downtown"
+target_entry = "from_lobby"

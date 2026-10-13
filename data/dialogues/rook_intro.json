@@ -1,0 +1,34 @@
+{
+  "start": {
+    "speaker": "Rook",
+    "text": "You're asking questions in the wrong bar, detective.",
+    "next": "n1"
+  },
+  "n1": {
+    "speaker": "Rook",
+    "text": "Say your piece and leave.",
+    "choices": [
+      {"text": "Did Kanzaki order the hit?", "next": "press", "requires": "kanzaki_paid"},
+      {"text": "Who are you?", "next": "who"},
+      {"text": "(Back off.)", "next": "bye"}
+    ]
+  },
+  "who": {
+    "speaker": "Rook",
+    "text": "Nobody. Just a man who keeps the peace for people who matter.",
+    "set_flag": "met_rook",
+    "next": "n1"
+  },
+  "press": {
+    "speaker": "Rook",
+    "text": "...The tab was paid as a favor. What happened after isn't your concern. Drop it — for your health.",
+    "discover": {"case": "case1", "id": "rook_threat", "title": "Rook's Threat", "desc": "Kanzaki's enforcer warned you off pressing the tab — all but confirming the syndicate cleaned up after the victim."},
+    "next": "n1"
+  },
+  "bye": {
+    "speaker": "Rook",
+    "text": "Smart. Rain'll wash you out of here either way.",
+    "next": "done"
+  },
+  "done": {"end": true}
+}

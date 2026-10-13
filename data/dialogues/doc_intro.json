@@ -1,0 +1,41 @@
+{
+  "start": {
+    "speaker": "Doc",
+    "text": "You look like trouble that pays. What do you need, detective?",
+    "next": "n1"
+  },
+  "n1": {
+    "speaker": "Doc",
+    "text": "Say it. My waiting room isn't a place to linger.",
+    "choices": [
+      {"text": "(Hand over the KZ-7 sample.)", "next": "analyze", "requires": "clue_toxic_drums"},
+      {"text": "What do you know about Kanzaki?", "next": "kanzaki"},
+      {"text": "Who signs this poison through customs?", "next": "inspector", "requires": "knows_toxin"},
+      {"text": "Nothing yet.", "next": "bye"}
+    ]
+  },
+  "analyze": {
+    "speaker": "Doc",
+    "text": "...This isn't waste. It's a neuroagent — a failed batch of a nerve compound Kanzaki's pharma arm buried years ago. Sunk in the harbor, it's been leaching into the low-district water for months. That's your body count, detective. Slow poison, one glass at a time.",
+    "set_flag": "knows_toxin",
+    "discover": {"case": "case2", "id": "toxin_analysis", "title": "The Analysis", "desc": "Doc confirms KZ-7 is a banned neuroagent from Kanzaki's pharma division, dumped in the harbor and poisoning the low districts' water. The dead reporter was about to blow it open."},
+    "next": "n1"
+  },
+  "kanzaki": {
+    "speaker": "Doc",
+    "text": "Kanzaki? Half my patients are their cleanup. I don't ask questions, they don't burn my clinic down. That's the whole arrangement.",
+    "next": "n1"
+  },
+  "inspector": {
+    "speaker": "Doc",
+    "text": "Someone signs the harbor manifests clean. Word is it's Halloran — Harbor Authority. Drinks alone on the east rooftops when the guilt gets loud. Start there.",
+    "set_flag": "lead_halloran",
+    "next": "n1"
+  },
+  "bye": {
+    "speaker": "Doc",
+    "text": "Then stop bleeding on my floor and go.",
+    "next": "done"
+  },
+  "done": {"end": true}
+}

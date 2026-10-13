@@ -1,0 +1,8 @@
+{
+  "start": {
+    "speaker": "Aide",
+    "text": "The Board is still in session. The Board is always in session. Do take a pamphlet on your way out, detective — it recycles.",
+    "next": "done"
+  },
+  "done": {"end": true}
+}

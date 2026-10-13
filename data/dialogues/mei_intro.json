@@ -1,0 +1,27 @@
+{
+  "start": {
+    "branch": {"flag": "knows_halloran_daughter", "yes": "known", "no": "scared"}
+  },
+  "scared": {
+    "speaker": "Mei",
+    "text": "Are you a doctor? ...No. You've got the sad coat, not the white one. My hands don't work right anymore. Doc says it's the water. He says it real quiet, like if he says it soft it won't be true.",
+    "next": "scared2"
+  },
+  "scared2": {
+    "speaker": "Mei",
+    "text": "My dad's going to fix it. He works at the harbor — he's important. He says he's fixing it. He looks so tired when he says it.",
+    "set_flag": "met_mei",
+    "next": "done"
+  },
+  "known": {
+    "speaker": "Mei",
+    "text": "You know my dad? He's got the same tired face as you now. ...Is he in trouble? He keeps saying he's fixing it. Whatever it is, tell him I'm not scared. Tell him he can stop being tired.",
+    "next": "known2"
+  },
+  "known2": {
+    "speaker": "Detective",
+    "text": "(Halloran signs the poison through the harbor so the man who's poisoning her keeps her alive. She's nine. She thinks her father is a hero, and the awful part is — from where she's lying, he is.)",
+    "next": "done"
+  },
+  "done": {"end": true}
+}

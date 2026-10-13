@@ -1,0 +1,39 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Distrik"
+run/main_scene="res://scenes/Boot.tscn"
+config/features=PackedStringArray("4.6", "Forward Plus")
+
+[autoload]
+
+Game="*res://scripts/globals/GameManager.gd"
+Scenes="*res://scripts/globals/SceneManager.gd"
+Dialogue="*res://scripts/globals/DialogueManager.gd"
+Cases="*res://scripts/globals/CaseManager.gd"
+Audio="*res://scripts/globals/AudioManager.gd"
+Atmosphere="*res://scripts/globals/Atmosphere.gd"
+Save="*res://scripts/globals/SaveSystem.gd"
+Narrator="*res://scripts/globals/Narrator.gd"
+Pause="*res://scripts/globals/PauseMenu.gd"
+Atlas="*res://scripts/globals/MapManager.gd"
+Combat="*res://scripts/globals/Combat.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

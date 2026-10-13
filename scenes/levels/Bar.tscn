@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/levels/Level.gd" id="lvl"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/bar.png" id="bg"]
+[ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="ply"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/NPC.tscn" id="npc"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Clue.tscn" id="clue"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Exit.tscn" id="exit"]
+
+[node name="Bar" type="Node2D"]
+script = ExtResource("lvl")
+bg_scale = 1.4
+floor_frac = 0.9
+interior = true
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("bg")
+
+[node name="Entries" type="Node2D" parent="."]
+
+[node name="start" type="Marker2D" parent="Entries"]
+position = Vector2(320, 976)
+
+[node name="from_alley" type="Marker2D" parent="Entries"]
+position = Vector2(340, 976)
+
+[node name="from_office" type="Marker2D" parent="Entries"]
+position = Vector2(1450, 976)
+
+[node name="Player" parent="." instance=ExtResource("ply")]
+position = Vector2(340, 976)
+
+[node name="Bartender" parent="." instance=ExtResource("npc")]
+position = Vector2(980, 976)
+npc_name = "Kaito"
+dialogue_id = "bartender_intro"
+sprite_path = "res://assets/characters/model_kaito.png"
+post_dialogue_id = "bartender_done"
+
+[node name="Rook" parent="." instance=ExtResource("npc")]
+position = Vector2(1320, 976)
+npc_name = "Rook"
+dialogue_id = "rook_intro"
+sprite_path = "res://assets/characters/model_rook.png"
+post_dialogue_id = "rook_done"
+
+[node name="Clue1" parent="." instance=ExtResource("clue")]
+position = Vector2(640, 1018)
+clue_id = "ledger"
+title = "Bartender's Ledger"
+description = "A ledger with a name circled: 'Kanzaki'. The victim's tab was paid in full the night he died."
+case_id = "case1"
+
+[node name="ExitToAlley" parent="." instance=ExtResource("exit")]
+position = Vector2(150, 976)
+target_level = "alley"
+target_entry = "from_bar"
+
+[node name="ExitToOffice" parent="." instance=ExtResource("exit")]
+position = Vector2(1560, 976)
+target_level = "office"
+target_entry = "from_bar"

@@ -1,0 +1,40 @@
+{
+  "start": {
+    "speaker": "Clerk",
+    "text": "You're not on the visitor log. I didn't buzz anyone in. Please — whatever you're here for, I file things. That's all. I file things.",
+    "next": "n1"
+  },
+  "n1": {
+    "speaker": "Clerk",
+    "text": "...What do you want?",
+    "choices": [
+      {"text": "The Reclamation Board. Who are they?", "next": "board"},
+      {"text": "I need everything on the harbor districts.", "next": "harbor"},
+      {"text": "Someone told you to lose a file. Who?", "next": "buried", "requires": "knows_board"},
+      {"text": "(Leave him be.)", "next": "bye"}
+    ]
+  },
+  "board": {
+    "speaker": "Clerk",
+    "text": "The Board? Nobody, and everybody. Appointees. No elections, no names on the door. When a district stops turning a profit, they vote to 'reclaim' it — rezone it, run it down, let it go quiet. They don't hate anyone. That's the awful part. It's just accounting.",
+    "set_flag": "knows_board",
+    "discover": {"case": "case2", "id": "the_board", "title": "The Reclamation Board", "desc": "An unelected municipal body that 'reclaims' districts deemed unprofitable — rezoning them for managed decline. No malice, no names. Just a vote and a stamp. The clerk says the harbor came through like any other line item."},
+    "next": "n1"
+  },
+  "harbor": {
+    "speaker": "Clerk",
+    "text": "The harbor... that order got walked in personally. Stamped same-day, which never happens. I was told to shelf it deep and forget the number. It's still here — third bank of cabinets, misfiled under Sanitation. I never touched it. You understand? I never touched it.",
+    "next": "n1"
+  },
+  "buried": {
+    "speaker": "Clerk",
+    "text": "A man from the tower. Polite. He didn't threaten me — he just mentioned my transfer had been 'approved, pending cooperation.' Thirty years I've kept this archive. They can erase me from it with one form. So I shelved the order and I stopped sleeping. That's the whole of my courage, detective. I'm sorry.",
+    "next": "n1"
+  },
+  "bye": {
+    "speaker": "Clerk",
+    "text": "Take what you came for. Just... put the drawers back the way you found them. It's all I can control now.",
+    "next": "done"
+  },
+  "done": {"end": true}
+}

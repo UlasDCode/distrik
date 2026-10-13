@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/levels/Level.gd" id="lvl"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/downtown.png" id="bg"]
+[ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="ply"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Exit.tscn" id="exit"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Clue.tscn" id="clue"]
+
+[node name="Downtown" type="Node2D"]
+script = ExtResource("lvl")
+bg_scale = 1.4
+floor_frac = 0.92
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("bg")
+
+[node name="Entries" type="Node2D" parent="."]
+
+[node name="start" type="Marker2D" parent="Entries"]
+position = Vector2(300, 976)
+
+[node name="from_main" type="Marker2D" parent="Entries"]
+position = Vector2(315, 976)
+
+[node name="from_archive" type="Marker2D" parent="Entries"]
+position = Vector2(1127, 976)
+
+[node name="from_lobby" type="Marker2D" parent="Entries"]
+position = Vector2(1624, 976)
+
+[node name="from_cityhall" type="Marker2D" parent="Entries"]
+position = Vector2(1323, 976)
+
+[node name="Player" parent="." instance=ExtResource("ply")]
+position = Vector2(300, 976)
+
+[node name="RenewalBanner" parent="." instance=ExtResource("clue")]
+position = Vector2(430, 1010)
+clue_id = "renewal_banner"
+title = "Renewal Banner"
+description = "A glossy municipal banner spans the plaza: 'HARBOR RECLAMATION & RENEWAL — A CLEANER TOMORROW.' Smiling stock-photo families, a skyline that doesn't exist yet. This is what 'writing off forty thousand people' looks like when the city frames it. They didn't hide the crime downtown. They gave it a logo and a ribbon-cutting."
+case_id = "case2"
+
+[node name="ExitToMain" parent="." instance=ExtResource("exit")]
+position = Vector2(315, 976)
+target_level = "main_street"
+target_entry = "from_downtown"
+travel_note = "Back down toward the neon and the noise, where the city stops pretending to be respectable."
+
+[node name="ExitToArchive" parent="." instance=ExtResource("exit")]
+position = Vector2(1127, 976)
+target_level = "archive"
+target_entry = "from_street"
+travel_note = "The Hall of Records. Everything the city does to its people, it writes down somewhere first."
+
+[node name="ExitToCityHall" parent="." instance=ExtResource("exit")]
+position = Vector2(1323, 976)
+target_level = "cityhall"
+target_entry = "from_street"
+requires_flag = "knows_coverup"
+travel_note = "City Hall. Up the wet steps, through the cold doors, into a hall built so big that a man crossing it stops meaning anything. My footsteps come back off the marble a half-second late, like a heartbeat that stopped an hour ago and hasn't been told. Nothing here was designed to keep people out. It was designed to make them feel too small to have come."
+
+[node name="ExitToTower" parent="." instance=ExtResource("exit")]
+position = Vector2(1624, 976)
+target_level = "tower_lobby"
+target_entry = "from_street"
+requires_flag = "clue_reclamation_directive"
+travel_note = "Kanzaki Tower. With Order R-9 in my coat, I finally have a reason they can't turn away at the door."

@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/levels/Level.gd" id="lvl"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/clinic.png" id="bg"]
+[ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="ply"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/NPC.tscn" id="npc"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Exit.tscn" id="exit"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Clue.tscn" id="clue"]
+
+[node name="Clinic" type="Node2D"]
+script = ExtResource("lvl")
+bg_scale = 1.1
+floor_frac = 0.9
+interior = true
+char_scale = 6.0
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("bg")
+
+[node name="Entries" type="Node2D" parent="."]
+
+[node name="start" type="Marker2D" parent="Entries"]
+position = Vector2(300, 900)
+
+[node name="from_street" type="Marker2D" parent="Entries"]
+position = Vector2(300, 900)
+
+[node name="Player" parent="." instance=ExtResource("ply")]
+position = Vector2(300, 900)
+
+[node name="Doc" parent="." instance=ExtResource("npc")]
+position = Vector2(950, 900)
+npc_name = "Doc"
+dialogue_id = "doc_intro"
+sprite_path = "res://assets/characters/model_doc.png"
+post_dialogue_id = "doc_done"
+done_flag = "lead_halloran"
+
+[node name="Patient" parent="." instance=ExtResource("npc")]
+position = Vector2(560, 900)
+npc_name = "Patient"
+dialogue_id = "patient_intro"
+sprite_path = "res://assets/characters/npc_dockworker.png"
+post_dialogue_id = "patient_done"
+done_flag = "heard_sick"
+
+[node name="Mei" parent="." instance=ExtResource("npc")]
+position = Vector2(740, 900)
+npc_name = "Mei"
+dialogue_id = "mei_intro"
+sprite_path = "res://assets/characters/npc_child.png"
+scale_mult = 0.7
+
+[node name="Ledger" parent="." instance=ExtResource("clue")]
+position = Vector2(1180, 900)
+clue_id = "clinic_ledger"
+title = "Intake Ledger"
+description = "Doc's ledger: forty-odd cases this month, all from the low districts — tremors, blindness, seizures. Every one written off as 'bad water.' Forty families, and no one downtown is counting."
+case_id = "case2"
+
+[node name="ExitToStreet" parent="." instance=ExtResource("exit")]
+position = Vector2(150, 900)
+target_level = "main_street"
+target_entry = "from_clinic"

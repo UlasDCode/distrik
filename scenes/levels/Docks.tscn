@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/levels/Level.gd" id="lvl"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/docks.png" id="bg"]
+[ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="ply"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Clue.tscn" id="clue"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Exit.tscn" id="exit"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/NPC.tscn" id="npc"]
+
+[node name="Docks" type="Node2D"]
+script = ExtResource("lvl")
+bg_scale = 1.4
+floor_frac = 0.66
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("bg")
+
+[node name="Entries" type="Node2D" parent="."]
+
+[node name="start" type="Marker2D" parent="Entries"]
+position = Vector2(320, 976)
+
+[node name="from_street" type="Marker2D" parent="Entries"]
+position = Vector2(320, 976)
+
+[node name="Player" parent="." instance=ExtResource("ply")]
+position = Vector2(320, 976)
+
+[node name="Manifest" parent="." instance=ExtResource("clue")]
+position = Vector2(900, 1000)
+clue_id = "docks_manifest"
+title = "Container KZ-7"
+description = "A sealed manifest half-sunk in a puddle: 'KZ-7 — biomedical, do NOT scan.' Kanzaki's been dumping something out here. This is the thread the dead man was pulling."
+case_id = "case2"
+
+[node name="Mara" parent="." instance=ExtResource("npc")]
+position = Vector2(1300, 900)
+npc_name = "Mara"
+dialogue_id = "dockworker_intro"
+sprite_path = "res://assets/characters/model_mara.png"
+post_dialogue_id = "mara_done"
+done_flag = "knows_drums"
+
+[node name="KZ7" parent="." instance=ExtResource("clue")]
+position = Vector2(560, 900)
+clue_id = "toxic_drums"
+title = "Inside KZ-7"
+description = "You pry the seal on KZ-7. Rows of black drums, hazard-striped, sweating something that stings your eyes through the rain. This isn't medical waste. You pocket a sample vial."
+case_id = "case2"
+
+[node name="DragMarks" parent="." instance=ExtResource("clue")]
+position = Vector2(760, 900)
+clue_id = "drag_marks"
+title = "Drag Marks"
+description = "The pier's scored with fresh drag marks that end at the black water. Something heavy went in here — and the tide didn't bring it back."
+case_id = "case2"
+
+[node name="PressBadge" parent="." instance=ExtResource("clue")]
+position = Vector2(1050, 900)
+clue_id = "press_badge"
+title = "A Press Badge"
+description = "A cracked press badge floating in an oil slick — 'K. Renner, Harbor Courier.' The dead man in the alley had a name, and a story he never got to file."
+case_id = "case2"
+
+[node name="RivalMark" parent="." instance=ExtResource("clue")]
+position = Vector2(430, 900)
+clue_id = "rival_mark"
+title = "A Rival's Mark"
+description = "Spray-stencilled on a container, half-scrubbed: the twin-serpent tag of the Zheng cartel. For a second it reads like they dumped this. Then you check the manifest again — Kanzaki Holdings, every crate. The Zheng didn't do this. They're just circling, watching a competitor sink something valuable in the harbor. Vultures always know where the dying is."
+case_id = "case2"
+
+[node name="Outfall" parent="." instance=ExtResource("clue")]
+position = Vector2(1420, 900)
+clue_id = "outfall_pipe"
+title = "The Outfall Pipe"
+description = "A storm drain the size of a doorway, venting black water straight into the harbor a hundred metres from where the district draws its supply. Not sabotage — engineering. Someone drew this on a plan, costed it, and signed off, because routing it further out would have cost more than the people it drains past are worth. The poison is new. The arithmetic that put the pipe here is forty years old."
+case_id = "case2"
+
+[node name="ExitToStreet" parent="." instance=ExtResource("exit")]
+position = Vector2(150, 976)
+target_level = "main_street"
+target_entry = "from_docks"

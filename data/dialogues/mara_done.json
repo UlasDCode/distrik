@@ -1,0 +1,4 @@
+{
+  "start": {"speaker": "Mara", "text": "I've told you what I know, detective. Now let me get back to forgetting I did.", "next": "done"},
+  "done": {"end": true}
+}

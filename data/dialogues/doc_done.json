@@ -1,0 +1,4 @@
+{
+  "start": {"speaker": "Doc", "text": "The sample's read and the name's given. Anything more from me, and you're paying by the hour.", "next": "done"},
+  "done": {"end": true}
+}

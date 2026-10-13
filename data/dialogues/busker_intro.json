@@ -1,0 +1,45 @@
+{
+  "start": {
+    "speaker": "Sable",
+    "text": "Spare a coin for a dying art, detective? No? Figures. Nobody down here has anything but time and bad lungs.",
+    "next": "n1"
+  },
+  "n1": {
+    "speaker": "Sable",
+    "text": "Trains stopped running honest years ago. But people still pass through. I see all of them. What do you want to know?",
+    "choices": [
+      {"text": "You knew the courier. Renner.", "next": "renner", "requires": "clue_press_badge"},
+      {"text": "People use this station for drops?", "next": "drops"},
+      {"text": "What do you see down here?", "next": "see"},
+      {"text": "(Leave him to his song.)", "next": "bye"}
+    ]
+  },
+  "renner": {
+    "speaker": "Sable",
+    "text": "The kid with the recorder? Yeah. Rode the last train most nights, scared and stubborn. Last time I saw him he was white as the tiles. Said if anything happened to him, what he'd found was 'in the wall.' Then he tipped me a week's rent and never came back.",
+    "set_flag": "knows_deaddrop",
+    "next": "drops2"
+  },
+  "drops": {
+    "speaker": "Sable",
+    "text": "Down here? This whole station's a drop. No cameras that work, no cops that care. If a man wanted to hide something so it'd outlive him, the old luggage lockers behind me are where he'd put it.",
+    "set_flag": "knows_deaddrop",
+    "next": "n1"
+  },
+  "drops2": {
+    "speaker": "Sable",
+    "text": "'In the wall' — the old luggage lockers, has to be. Go on. Whatever he died holding, it's still down here holding its breath.",
+    "next": "n1"
+  },
+  "see": {
+    "speaker": "Sable",
+    "text": "I see the city's overflow. The ones it reclaimed and forgot to bury. Ask the harbor districts — half of them ride through here now, coughing, on their way to nowhere with the lights out. The city doesn't kill you loud, detective. It just stops running your train.",
+    "next": "n1"
+  },
+  "bye": {
+    "speaker": "Sable",
+    "text": "Suit yourself. Mind the gap. It's the only honest warning this city gives for free.",
+    "next": "done"
+  },
+  "done": {"end": true}
+}

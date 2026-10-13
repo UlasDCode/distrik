@@ -1,0 +1,48 @@
+{
+  "start": {
+    "speaker": "Mara",
+    "text": "You shouldn't be down here after dark. Kanzaki's boys don't like eyes on the water.",
+    "next": "n1"
+  },
+  "n1": {
+    "speaker": "Mara",
+    "text": "Say it fast, then go.",
+    "choices": [
+      {"text": "What comes in on the night shipments?", "next": "shipments", "requires": "clue_docks_manifest"},
+      {"text": "The badge said 'Renner.' You knew him?", "next": "renner", "requires": "clue_press_badge"},
+      {"text": "Who runs the night crews?", "next": "crews"},
+      {"text": "Did you know the dead reporter?", "next": "victim"},
+      {"text": "(Leave her be.)", "next": "bye"}
+    ]
+  },
+  "shipments": {
+    "speaker": "Mara",
+    "text": "Sealed drums. No labels, no scans. One splits open now and then — the fish float up dead for a week after. Container KZ-7's the worst of it. Nobody's cleared to crack that one.",
+    "set_flag": "knows_drums",
+    "discover": {"case": "case2", "id": "mara_testimony", "title": "Mara's Testimony", "desc": "A dockworker says Kanzaki lands unlabeled sealed drums; when one leaks the harbor goes dead for a week. KZ-7 is the container no one's allowed to open."},
+    "next": "n1"
+  },
+  "renner": {
+    "speaker": "Mara",
+    "text": "Renner. Yeah. Slipped me a hundred to look away while he photographed KZ-7. I told him to run. He didn't run fast enough. That's on me, detective. Some of it.",
+    "set_flag": "knows_renner",
+    "discover": {"case": "case2", "id": "renner_link", "title": "Renner's Last Night", "desc": "Mara says the dead reporter, Renner, bribed her to photograph Container KZ-7 the night he died. He got too close to the truth."},
+    "next": "n1"
+  },
+  "crews": {
+    "speaker": "Mara",
+    "text": "Kanzaki's own men — hoods up, no names. And the inspector, Halloran, signs whatever they land. Clean paperwork for dirty water. You didn't hear it from me.",
+    "next": "n1"
+  },
+  "victim": {
+    "speaker": "Mara",
+    "text": "Came asking the same questions you are. Then he stopped coming. Take the hint, detective.",
+    "next": "n1"
+  },
+  "bye": {
+    "speaker": "Mara",
+    "text": "Smart. The water keeps its secrets. Mostly.",
+    "next": "done"
+  },
+  "done": {"end": true}
+}

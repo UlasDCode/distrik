@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c3jqd6xpril6e"
+path="res://.godot/imported/WE Heavy Inside Rain 1.wav-6474de6c3b2d69d926b1217de8f66c3c.sample"
+
+[deps]
+
+source_file="res://assets/audio/audio cues/WE Heavy Inside Rain 1.wav"
+dest_files=["res://.godot/imported/WE Heavy Inside Rain 1.wav-6474de6c3b2d69d926b1217de8f66c3c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

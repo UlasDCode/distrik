@@ -1,0 +1,8 @@
+{
+  "start": {
+    "speaker": "Clerk",
+    "text": "You found it. Please — take it and go. I have to be able to say I never saw your face.",
+    "next": "done"
+  },
+  "done": {"end": true}
+}

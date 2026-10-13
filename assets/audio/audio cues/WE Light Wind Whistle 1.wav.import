@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://nd2xs80b18rp"
+path="res://.godot/imported/WE Light Wind Whistle 1.wav-359c42edf3789262629e47aebb15bb9d.sample"
+
+[deps]
+
+source_file="res://assets/audio/audio cues/WE Light Wind Whistle 1.wav"
+dest_files=["res://.godot/imported/WE Light Wind Whistle 1.wav-359c42edf3789262629e47aebb15bb9d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

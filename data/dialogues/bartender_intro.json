@@ -1,0 +1,35 @@
+{
+  "start": {
+    "speaker": "Kaito",
+    "text": "Neon Dragon's closed to cops. But you don't look like a cop. You look like a man who's already drowning.",
+    "next": "n1"
+  },
+  "n1": {
+    "speaker": "Kaito",
+    "text": "What'll it be?",
+    "choices": [
+      {"text": "Tell me about the dead man.", "next": "victim"},
+      {"text": "What's 'Kanzaki' doing in your ledger?", "next": "kanzaki", "requires": "knows_kanzaki"},
+      {"text": "Nothing. Just looking.", "next": "bye"}
+    ]
+  },
+  "victim": {
+    "speaker": "Kaito",
+    "text": "He drank here that last night. Paid his whole tab — cash. Nobody does that unless they're settling up before they disappear.",
+    "discover": {"case": "case1", "id": "paid_tab", "title": "The Paid Tab", "desc": "The victim paid off his entire bar tab in cash the night he died, as if expecting the end."},
+    "next": "n1"
+  },
+  "kanzaki": {
+    "speaker": "Kaito",
+    "text": "...You didn't get that name here. Kanzaki paid the tab FOR him. A dead man's debts, cleared by the syndicate. Ask yourself why.",
+    "set_flag": "kanzaki_paid",
+    "discover": {"case": "case1", "id": "kanzaki_link", "title": "Kanzaki's Hand", "desc": "The Kanzaki syndicate secretly paid the victim's tab. They were involved before he died."},
+    "next": "n1"
+  },
+  "bye": {
+    "speaker": "Kaito",
+    "text": "Then get out. The rain's warmer than the welcome here.",
+    "next": "done"
+  },
+  "done": {"end": true}
+}

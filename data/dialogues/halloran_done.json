@@ -1,0 +1,4 @@
+{
+  "start": {"speaker": "Halloran", "text": "You've got your confession. Now get off my roof before someone sees you standing next to me.", "next": "done"},
+  "done": {"end": true}
+}

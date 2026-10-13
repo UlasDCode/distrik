@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cl2e6smsktqdg"
+path="res://.godot/imported/Mystery Unsolved.wav-b9e10f5c69ffeef08d2465c203faa021.sample"
+
+[deps]
+
+source_file="res://assets/audio/music/Mystery Unsolved.wav"
+dest_files=["res://.godot/imported/Mystery Unsolved.wav-b9e10f5c69ffeef08d2465c203faa021.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

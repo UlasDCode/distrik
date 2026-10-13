@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/levels/Level.gd" id="lvl"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/main_street.png" id="bg"]
+[ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="ply"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Exit.tscn" id="exit"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Clue.tscn" id="clue"]
+
+[node name="MainStreet" type="Node2D"]
+script = ExtResource("lvl")
+bg_scale = 1.4
+floor_frac = 0.9
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("bg")
+
+[node name="Entries" type="Node2D" parent="."]
+
+[node name="start" type="Marker2D" parent="Entries"]
+position = Vector2(300, 976)
+
+[node name="from_alley" type="Marker2D" parent="Entries"]
+position = Vector2(200, 976)
+
+[node name="from_docks" type="Marker2D" parent="Entries"]
+position = Vector2(420, 976)
+
+[node name="from_clinic" type="Marker2D" parent="Entries"]
+position = Vector2(1015, 976)
+
+[node name="from_rooftop" type="Marker2D" parent="Entries"]
+position = Vector2(1330, 976)
+
+[node name="from_downtown" type="Marker2D" parent="Entries"]
+position = Vector2(1500, 976)
+
+[node name="from_subway" type="Marker2D" parent="Entries"]
+position = Vector2(700, 976)
+
+[node name="Player" parent="." instance=ExtResource("ply")]
+position = Vector2(300, 976)
+
+[node name="HealthNotice" parent="." instance=ExtResource("clue")]
+position = Vector2(850, 1000)
+clue_id = "health_notice"
+title = "Public Health Screen"
+description = "A city-run screen loops over the crowd, bright and calm: 'HARBOR WATER MEETS ALL SAFETY STANDARDS. Reports of illness are UNVERIFIED. Trust your city.' A kid coughs under it, blood on his sleeve. Nobody looks up. The lie isn't hidden. It's just louder than the truth."
+case_id = "case2"
+
+[node name="ExitToAlley" parent="." instance=ExtResource("exit")]
+position = Vector2(130, 976)
+target_level = "alley"
+target_entry = "from_main"
+travel_note = "Back up the side street, toward the alley off Kessler where all this started."
+
+[node name="ExitToDocks" parent="." instance=ExtResource("exit")]
+position = Vector2(420, 976)
+target_level = "docks"
+target_entry = "from_street"
+travel_note = "South, down to the waterfront — past two checkpoints and a dozen dead cameras, to where Kanzaki's containers come ashore."
+
+[node name="ExitToClinic" parent="." instance=ExtResource("exit")]
+position = Vector2(1015, 976)
+target_level = "clinic"
+target_entry = "from_street"
+requires_flag = "clue_toxic_drums"
+travel_note = "Doc keeps a clinic behind a noodle stall three blocks over. No sign, no questions — the kind of place a sample like this gets read."
+
+[node name="ExitToRooftop" parent="." instance=ExtResource("exit")]
+position = Vector2(1379, 976)
+target_level = "rooftop"
+target_entry = "from_street"
+requires_flag = "lead_halloran"
+travel_note = "The east rooftops. Twelve flights up a dead elevator, out into the rain, to where a man goes when he can't stand his own paperwork."
+
+[node name="ExitToSubway" parent="." instance=ExtResource("exit")]
+position = Vector2(700, 976)
+target_level = "subway"
+target_entry = "from_street"
+travel_note = "Down the dead escalator into the old metro — where the city keeps the people it's already written off, and the trains mostly don't come."
+
+[node name="ExitToDowntown" parent="." instance=ExtResource("exit")]
+position = Vector2(1620, 976)
+target_level = "downtown"
+target_entry = "from_main"
+requires_flag = "knows_coverup"
+travel_note = "Uptown, where the streets get clean and the buildings get tall. The rot climbs to the council — and everything the city does, it files away downtown first."
